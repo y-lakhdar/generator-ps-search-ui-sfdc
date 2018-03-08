@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, height=device-height">
   <script src="js/CoveoJsSearch.js"></script>
   <script src="js/Coveo.<%= capitalizeCustomerSafeName %>.js"></script>
-  <script src="js/templates/templatesNew.js"></script>
+  <script src="js/templatesNew.js"></script>
   <link rel="stylesheet" href="css/CoveoFullSearchNewDesign.css" />
   <link rel="stylesheet" href="css/CommunitySearch.<%= capitalizeCustomerSafeName %>.css" />
 
@@ -17,7 +17,7 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      Coveo.SearchEndpoint.configureSampleEndpointV2();
+      Coveo.SearchEndpoint.configureCloudV2Endpoint('<%%- config.coveo.org_id %>', '<%%- token %>', '<%%- config.coveo.rest_uri -%>');
       Coveo.init<%= capitalizeCustomerSafeName %>Custo(document.getElementById('search'), {});
     })
   </script>
