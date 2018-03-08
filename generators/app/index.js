@@ -23,11 +23,41 @@ module.exports = class extends Generator {
             'Welcome to the fabulous ' + chalk.red('ps-search-ui-sfdc') + ' generator!'
         ));
 
-        var prompts = [{
+        const prompts = [{
             type: 'input',
             name: 'customer',
             message: 'Your customer(project) name?',
             default: path.basename(process.cwd())
+        }, {
+            name: 'description',
+            message: 'Description',
+            when: !this.props.description
+        }, {
+            name: 'authorEmail',
+            message: "Author's Email",
+            when: !this.props.authorEmail,
+            default: this.user.git.email(),
+            store: true
+        }, {
+            name: 'authorName',
+            message: "Author's Name",
+            when: !this.props.authorName,
+            default: this.user.git.name(),
+            store: true
+        }, {
+            type: 'list',
+            name: 'sourceControl',
+            message: "Source Control",
+            when: !this.props.sourceControl,
+            default: 'Git',
+            choices: ['Git', 'Mercurial']
+        }, {
+            name: 'keywords',
+            message: 'Package keywords (comma to split)',
+            when: !this.props.keywords,
+            filter(words) {
+              return _.compact(words.split(/\s*,\s*/g));
+            }
         }];
 
         return this.prompt(prompts).then(function (props) {
@@ -49,16 +79,6 @@ module.exports = class extends Generator {
             this.destinationRoot(this.destinationPath(this.props.repoName));
         }
         const readmeTpl = _.template(this.fs.read(this.templatePath('README.md')));
-        this.composeWith(require.resolve('generator-node/generators/app'), {
-            babel: false,
-            boilerplate: false,
-            name: this.props.repoName,
-            projectRoot: this.props.repoName,
-            skipInstall: this.options.skipInstall,
-            readme: readmeTpl({
-                repoName: this.props.repoName
-            })
-        });
 
         this.composeWith(require.resolve('../config'), {
             customer: this.props.customer
@@ -102,18 +122,31 @@ module.exports = class extends Generator {
         }
 
         extend(pkg, {
+            version: templatePkg.version,
+            main: templatePkg.main,
+            description: this.props.description,
+            engines: templatePkg.engines,
+            keywords: (templatePkg.keywords).concat(this.props.keywords),
             dependencies: templatePkg.dependencies,
             devDependencies: templatePkg.devDependencies,
-            keywords: templatePkg.keywords,
-            main: templatePkg.main,
-            engines: templatePkg.engines,
-            eslintConfig: templatePkg.eslintConfig
+            author: {
+                name: this.props.authorName,
+                email: this.props.authorEmail
+            },
+            scripts: templatePkg.scripts,
+            "lint-staged": templatePkg["lint-staged"]
         });
 
         // overwrite default scripts by template ones
-        pkg.scripts = templatePkg.scripts
 
         this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+
+        // Copy ignore file
+        this.fs.copyTpl(
+            this.templatePath('ignore'),
+            this.destinationPath(this.props.sourceControl == 'Git'? '.gitignore': '.hgignore'),
+            templateObj
+        );
 
         // Copy all dotfiles
         this.fs.copyTpl(
@@ -124,7 +157,7 @@ module.exports = class extends Generator {
         // gulp tasks
         this.fs.copyTpl(
             this.templatePath('gulpTasks/*'),
-            this.destinationPath('gulpTasks'),
+        this.destinationPath('gulpTasks'),
             templateObj
         );
 
@@ -132,6 +165,12 @@ module.exports = class extends Generator {
         this.fs.copyTpl(
             this.templatePath('tsconfig.json'),
             this.destinationPath('tsconfig.json'),
+            templateObj
+        );
+        // typescript configuration
+        this.fs.copyTpl(
+            this.templatePath('tslint.json'),
+            this.destinationPath('tslint.json'),
             templateObj
         );
 
@@ -163,7 +202,7 @@ module.exports = class extends Generator {
         );
 
         // below files are required for azure deployment
-        // TODO: add options in yeoman to prompt question if this project will be deployed to azure or not  
+        // TODO: add options in yeoman to prompt question if this project will be deployed to azure or not
         this.fs.copyTpl(
             this.templatePath('web.config'),
             this.destinationPath('web.config'),
@@ -189,18 +228,13 @@ module.exports = class extends Generator {
             this.destinationPath('gulpfile.js'),
             templateObj
         );
+        if (!this.option.skipInstall) {
+            this.npmInstall();
+        }
         // this.installDependencies({bower: false});
     }
 
     end() {
 
-    }
-
-    method1() {
-        this.log('method 1 just ran');
-    }
-
-    method2() {
-        this.log('method 2 just ran');
     }
 };

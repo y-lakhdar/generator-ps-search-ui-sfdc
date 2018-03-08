@@ -1,6 +1,6 @@
 {
   "name": "ps-search-ui-sfdc-bundle",
-  "version": "2.0.0",
+  "version": "0.0.0",
   "description": "Coveo - PS - JS Search UI SFDC Bundle",
   "engines": {
     "node": "6.10.0"
@@ -33,7 +33,6 @@
   "devDependencies": {
     "colors": "^1.1.2",
     "coveo-search-ui": "2.x.x",
-    "eslint": "^3.1.1",
     "event-stream": "^3.3.4",
     "expand-brackets": "^2.1.4",
     "fancy-log": "^1.3.2",
@@ -53,6 +52,7 @@
     "gulp-unzip": "^0.2.0",
     "gulp-zip": "^3.2.0",
     "minimist": "^1.2.0",
+    "prettier": "^1.10.2",
     "require-dir": "^0.3.1",
     "run-sequence": "^1.2.2",
     "ts-loader": "^2.0.3",

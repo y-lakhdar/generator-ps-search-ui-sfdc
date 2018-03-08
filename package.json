@@ -1,6 +1,6 @@
 {
   "name": "generator-ps-search-ui-sfdc",
-  "version": "0.1.7",
+  "version": "0.2.7",
   "description": "generator to serve CoveoPS folks with a nodejs module as development environment to interact with the Coveo JS Search UI framework",
   "repository": {
     "type": "git",
