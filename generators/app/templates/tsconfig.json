@@ -3,9 +3,13 @@
     "module": "commonjs",
     "target": "es5",
     "declaration": false,
+    "strict": true /* Enable all strict type-checking options. */,
+    "skipLibCheck": true,
     "experimentalDecorators": true,
     "outDir": "./public",
-    "sourceMap": true
+    "sourceMap": true,
+    "noImplicitThis": false,
+    "noUnusedLocals": true
   },
   "include": [
     "node_modules/coveo-search-ui/lib/webpack/index.d.ts",

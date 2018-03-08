@@ -43,7 +43,6 @@ Scaffolds out a complete generator directory structure for you:
     |   |-- compile.js
     |   |-- css.js
     |   |-- dev.js
-    |   |-- prettify.js
     |   |-- setup.js
     |-- sass
     |   |-- AgentBox.scss

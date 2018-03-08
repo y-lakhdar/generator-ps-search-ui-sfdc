@@ -11,9 +11,6 @@ const rename = require('gulp-rename');
 const requireDir = require('require-dir');
 const rmdir = require('gulp-rimraf');
 const zip = require('gulp-zip');
-const streamify = require('gulp-streamify');
-const gulpif = require('gulp-if');
-const prompt = require('gulp-prompt');
 const livereload = require('gulp-livereload');
 const runsequence = require('run-sequence');
 const colors = require('colors');
@@ -32,12 +29,12 @@ gulp.task('prepublish', ['buildAll']);
 
 gulp.task('buildAll', function (done) {
   console.log((bannerMsg + ' for all distribution [' + bundles.join(', ') + ']').bgGreen.red);
-  runsequence('clean', ['css', 'setup'], 'prettify', 'compileAll', done);
+  runsequence('clean', ['css', 'setup'], 'compileAll', done);
 });
 
 gulp.task('build', function (done) {
   console.log((bannerMsg + ' of the library [' + process.env.CUSTOM_BUNDLE + ' bundle]').bgGreen.red);
-  runsequence('clean', ['css', 'setup'], 'prettify', 'compile', done);
+  runsequence('clean', ['css', 'setup'], 'compile', done);
 });
 
 gulp.task('clean', function (done) {

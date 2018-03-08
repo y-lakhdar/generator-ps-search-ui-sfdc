@@ -1,0 +1,6 @@
+{
+  "arrow-parens": "always",
+  "semicolon": true,
+  "singleQuote": true,
+  "printWidth": 140
+}
