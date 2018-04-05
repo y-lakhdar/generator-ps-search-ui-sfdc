@@ -1,10 +1,14 @@
-import $$ = Coveo.$$;
-import IBuildingQueryEventArgs = Coveo.IBuildingQueryEventArgs;
-import IDoneBuildingQueryEventArgs = Coveo.IDoneBuildingQueryEventArgs;
-import IPreprocessResultsEventArgs = Coveo.IPreprocessResultsEventArgs;
-import InitializationEvents = Coveo.InitializationEvents;
-import INewQueryEventArgs = Coveo.INewQueryEventArgs;
-import QueryEvents = Coveo.QueryEvents;
+import {
+  IQuerySuccessEventArgs,
+  $$,
+  IBuildingQueryEventArgs,
+  IDoneBuildingQueryEventArgs,
+  IPreprocessResultsEventArgs,
+  InitializationEvents,
+  INewQueryEventArgs,
+  QueryEvents,
+  Dom
+} from 'coveo-search-ui';
 
 export class <%= capitalizeCustomerSafeName %>Custo {
 
@@ -24,7 +28,7 @@ export class <%= capitalizeCustomerSafeName %>Custo {
     this.rootElement.on(QueryEvents.buildingQuery, (e: Event, data: IBuildingQueryEventArgs) => this.handleBuildingQuery(e, data));
     this.rootElement.on(QueryEvents.doneBuildingQuery, (e: Event, data: IDoneBuildingQueryEventArgs) => this.handleDoneBuildingQuery(e, data));
     this.rootElement.on(QueryEvents.preprocessResults, (e: Event, data: IPreprocessResultsEventArgs) => this.handlePreprocessResults(e, data));
-    this.rootElement.on(QueryEvents.querySuccess, (e: Event, data: Coveo.IQuerySuccessEventArgs) => this.handleQuerySuccess(e, data));
+    this.rootElement.on(QueryEvents.querySuccess, (e: Event, data: IQuerySuccessEventArgs) => this.handleQuerySuccess(e, data));
   }
 
   /**
@@ -81,7 +85,7 @@ export class <%= capitalizeCustomerSafeName %>Custo {
    * Set default options of different UI Components for <%= capitalizeCustomerSafeName %>.
    */
   public getDefaultOptions(): any {
-    let defaultOptions: any = {
+    return {
       SalesforceResultLink: {
         alwaysOpenInNewWindow: true
       },
@@ -96,6 +100,5 @@ export class <%= capitalizeCustomerSafeName %>Custo {
         }
       }
     };
-    return defaultOptions;
   }
 }

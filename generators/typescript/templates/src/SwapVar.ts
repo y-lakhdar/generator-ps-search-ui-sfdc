@@ -14,7 +14,7 @@ export function swapVar(scope: any) {
   if (window['Coveo'] === undefined) {
     window['Coveo'] = scope;
   } else {
-    _.each(_.keys(scope), (k) => {
+    _.each(_.keys(scope), (k: any) => {
       window['Coveo'][k] = scope[k];
     });
   }

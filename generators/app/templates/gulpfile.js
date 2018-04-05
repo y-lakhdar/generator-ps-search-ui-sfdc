@@ -13,8 +13,6 @@ const colors = require('colors');
 const cfg = require('./config');
 const _ = require('underscore');
 
-var bundles = _.map(cfg.<%=customerSafeName%>.webpack_config, (v, k) => k);
-
 requireDir('./gulpTasks');
 
 gulp.task('default', ['build']);

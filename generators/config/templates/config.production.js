@@ -5,7 +5,6 @@ config.env = 'production';
 //Coveo
 config.coveo.api_key = '';
 config.coveo.api_key = '';
-config.coveo.superUser_api_key = '';
 config.coveo.expired_token = '';
 config.coveo.org_id = '';
 config.coveo.searchHub = '';

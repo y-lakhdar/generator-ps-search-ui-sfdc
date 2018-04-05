@@ -2,8 +2,7 @@
 const express = require('express');
 const app = express();
 const cfg = require('../config');
-const passport = require('../passports');
-const coveoPlatformApi = require('../middleware/cloudPlatformAPI');
+const coveoPlatformApi = require('../middlewares/cloudPlatformAPI');
 
 app.get('/', (req, res) => {
   res.render('pages/home');

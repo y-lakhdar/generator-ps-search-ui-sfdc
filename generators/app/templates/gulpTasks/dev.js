@@ -1,17 +1,15 @@
 'use strict';
+const gulp = require('gulp');
 const _ = require('underscore');
-const middlewares = require('./middlewares/cloudPlatformAPI');
-const config = require('dotenv').config({ path: 'variables.env' }).parsed;
-const argv = require('yargs').argv;
-const port = argv.port || 8081;
+const cfg = require('../config');
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
-const webpackConfig = require('./webpack.config.js');
+const webpackConfig = require('./../webpack.config.js');
 
 gulp.task('dev', (done) => {
 
   _.mapObject(webpackConfig.entry, (value, key) => {
-      value.unshift(`webpack-dev-server/client?http://localhost:${port}/`);
+      value.unshift(`webpack-dev-server/client?http://localhost:${cfg.server_port}/`);
     });
 
     const compiler = webpack(webpackConfig);
@@ -24,23 +22,17 @@ gulp.task('dev', (done) => {
       compress: true,
       before(app) {
         app.set('view engine', 'ejs');
-
-        app.use((req, res, next) => {
-          req.filter = cfg.coveo.filter;
-          next();
-        });
-
-        app.use(require('./routes/pages'));
+        app.use(require('../routes/pages'));
       }
     });
 
     const webpackServer = new WebpackDevServer(compiler, devServerOptions);
 
-    webpackServer.listen(port, (err, res) => {
+    webpackServer.listen(cfg.server_port, (err, res) => {
       if (err) {
         console.log(err);
       }
-      console.log(`Webpack Dev Server started: Listening on http://localhost:${port}`);
+      console.log(`Webpack Dev Server started: Listening on http://localhost:${cfg.server_port}`);
       done();
     });
 });

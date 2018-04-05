@@ -22,16 +22,16 @@ module.exports = class extends Generator {
 
     writing() {
 
-        const templateObj = { 
+        const templateObj = {
           customerSafeName : this.props.customerSafeName,
           capitalizeCustomerSafeName : this.props.customerSafeName.replace(/\b\w/g, l => l.toUpperCase()),
         }
 
         this.fs.copyTpl(
           this.templatePath('**'),
-          this.destinationPath('utils'), 
+          this.destinationPath('middlewares'),
           templateObj
         );
-        
+
     }
 }

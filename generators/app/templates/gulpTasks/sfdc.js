@@ -1,12 +1,10 @@
 const gulp = require('gulp');
 const zip = require('gulp-zip');
-const unzip = require('gulp-unzip');
 const replace = require('gulp-replace');
 const rename = require('gulp-rename');
 const insert = require('gulp-insert');
 const ejs = require('gulp-ejs');
 const log = require('fancy-log');
-const livereload = require('gulp-livereload');
 const cfg = require('../config');
 
 gulp.task('prepareSfdc', ['prepareSfdcResourceBundles','prepareSfdcVfComponents', 'prepareSfdcVfPages', 'prepareSfdcLightningComponents', 'prepareSfdcClasses'])
@@ -30,8 +28,7 @@ gulp.task('prepareSfdcVfComponents', function () {
     }, {
       ext: '.component'
     }).on('error', log))
-    .pipe(gulp.dest('./public/sfdc/components'))
-    .pipe(livereload());
+    .pipe(gulp.dest('./public/sfdc/components'));
 });
 
 gulp.task('prepareSfdcVfPages', function () {
@@ -42,8 +39,7 @@ gulp.task('prepareSfdcVfPages', function () {
     }, {
       ext: '.page'
     }).on('error', log))
-    .pipe(gulp.dest('./public/sfdc/pages'))
-    .pipe(livereload());
+    .pipe(gulp.dest('./public/sfdc/pages'));
 });
 
 gulp.task('prepareSfdcLightningComponents', function () {
@@ -52,8 +48,7 @@ gulp.task('prepareSfdcLightningComponents', function () {
       prototypeTitle: '<%= capitalizeCustomerSafeName %> SFDC Lightning Components',
       config: cfg
     }).on('error', log))
-    .pipe(gulp.dest('./public/sfdc/aura'))
-    .pipe(livereload());
+    .pipe(gulp.dest('./public/sfdc/aura'));
 });
 
 gulp.task('prepareSfdcClasses', function () {
@@ -62,8 +57,7 @@ gulp.task('prepareSfdcClasses', function () {
       prototypeTitle: '<%= capitalizeCustomerSafeName %> SFDC Classes',
       config: cfg
     }).on('error', log))
-    .pipe(gulp.dest('./public/sfdc/classes'))
-    .pipe(livereload());
+    .pipe(gulp.dest('./public/sfdc/classes'));
 });
 
 // BUNDLE

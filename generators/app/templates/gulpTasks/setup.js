@@ -1,7 +1,6 @@
 const gulp = require('gulp');
 const ejs = require('gulp-ejs');
 const cfg = require('../config');
-const cloudPlatformAPI = require('./middlewares/cloudPlatformAPI');
 
 gulp.task('setup', ['preparePages', 'copy']);
 

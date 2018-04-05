@@ -78,7 +78,6 @@ module.exports = class extends Generator {
             mkdirp(this.props.repoName);
             this.destinationRoot(this.destinationPath(this.props.repoName));
         }
-        const readmeTpl = _.template(this.fs.read(this.templatePath('README.md')));
 
         this.composeWith(require.resolve('../config'), {
             customer: this.props.customer
@@ -96,14 +95,6 @@ module.exports = class extends Generator {
             customer: this.props.customer
         });
 
-        this.composeWith(require.resolve('../image'), {
-            customer: this.props.customer
-        });
-
-        this.composeWith(require.resolve('../fonts'), {
-            customer: this.props.customer
-        });
-
         this.composeWith(require.resolve('../vendor'), {
             customer: this.props.customer
         });
@@ -116,7 +107,7 @@ module.exports = class extends Generator {
             customer: this.props.customer
         });
 
-        this.composeWith(require.resolve('../utils'), {
+        this.composeWith(require.resolve('../middlewares'), {
             customer: this.props.customer
         });
     }
@@ -165,7 +156,7 @@ module.exports = class extends Generator {
         // gulp tasks
         this.fs.copyTpl(
             this.templatePath('gulpTasks/*'),
-        this.destinationPath('gulpTasks'),
+            this.destinationPath('gulpTasks'),
             templateObj
         );
 
@@ -195,17 +186,17 @@ module.exports = class extends Generator {
             templateObj
         );
 
+        // README.md
+        this.fs.copyTpl(
+            this.templatePath('README.md'),
+            this.destinationPath('README.md'),
+            { repoName: this.props.repoName }
+        );
+
         // passports.js
         this.fs.copyTpl(
             this.templatePath('passports.js'),
             this.destinationPath('passports.js'),
-            templateObj
-        );
-
-        // server.js
-        this.fs.copyTpl(
-            this.templatePath('server.js'),
-            this.destinationPath('server.js'),
             templateObj
         );
 
