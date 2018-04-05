@@ -5,7 +5,7 @@ const cloudPlatformAPI = require('./middlewares/cloudPlatformAPI');
 
 gulp.task('setup', ['preparePages', 'copy']);
 
-gulp.task('copy', ['copyVendor']);
+gulp.task('copy', ['copyVendor', 'copyServer']);
 
 gulp.task('sfdc', ['prepareSfdc']);
 
@@ -18,7 +18,6 @@ gulp.task('preparePages', function () {
           production: process.env.NODE_ENV == 'production'
         }, { ext:'.html' }))
         .pipe(gulp.dest('./bin'))
-        .pipe(livereload());
 });
 
 gulp.task('copyVendor', function (done) {
@@ -26,29 +25,7 @@ gulp.task('copyVendor', function (done) {
     .pipe(gulp.dest('./bin/vendor'));
 });
 
-// gulp.task('copyJS', function () {
-//   gulp.src([
-//     './node_modules/coveo-search-ui/bin/js/**/*',
-//       './vendor/coveo/resources/js/components.js',
-//       './vendor/coveo/Box/js/templates/box.new.templates.js',
-//       './vendor/coveo/Box/js/*.js'
-//     ]).pipe(gulp.dest('./bin/js'))
-// });
-
-// gulp.task('copyCSS', function () {
-//   gulp.src([
-//     './node_modules/coveo-search-ui/bin/css/*.css',
-//     './vendor/coveo/Box/css/*.css'
-//   ]).pipe(gulp.dest('./bin/css'))
-// });
-
-// gulp.task('copyFonts', function () {
-//   /*gulp.src([
-//     './vendor/project/fonts/*.*',
-//   ]).pipe(gulp.dest('./bin/fonts'))*/
-// });
-
-// gulp.task('copyImage', function () {
-//   gulp.src('./node_modules/coveo-search-ui/bin/image/*')
-//       .pipe(gulp.dest('./public/image'))
-// });
+gulp.task('copyServer', function (done) {
+  return gulp.src(['./server.js'])
+    .pipe(gulp.dest('./bin/server.js'));
+});

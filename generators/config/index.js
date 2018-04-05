@@ -28,8 +28,8 @@ module.exports = class extends Generator {
 
         this.fs.copyTpl(
           this.templatePath('**'),
-          this.destinationPath('config'), 
-          { 
+          this.destinationPath('config'),
+          {
             customerSafeName : this.props.customerSafeName,
             capitalizeCustomerSafeName : this.props.customerSafeName.replace(/\b\w/g, l => l.toUpperCase()),
             authorEmail : authorEmail

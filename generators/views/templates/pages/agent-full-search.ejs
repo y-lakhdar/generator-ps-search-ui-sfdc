@@ -2,23 +2,36 @@
 <html>
 
 <head>
-  <title>Agent Full Search</title>
+  <title><%%- title %%></title>
   <meta about="Search all content at once." />
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, height=device-height">
-  <script src="js/CoveoJsSearch.js"></script>
+  <%% if (production) { %%>
+  <script type="application/javascript" src="js/CoveoJsSearch.Lazy.min.js"></script>
+  <script src="js/Coveo.<%= capitalizeCustomerSafeName %>min.js"></script>
+  <link rel="stylesheet" href="css/Coveo.<%= capitalizeCustomerSafeName %>.min.css" />
+  <%% } else { %%>
+  <script type="application/javascript" src="js/CoveoJsSearch.Lazy.js"></script>
   <script src="js/Coveo.<%= capitalizeCustomerSafeName %>.js"></script>
-  <script src="js/templatesNew.js"></script>
-  <link rel="stylesheet" href="css/CoveoFullSearchNewDesign.css" />
-  <link rel="stylesheet" href="css/AgentFullSearch.<%= capitalizeCustomerSafeName %>.css" />
+  <%% } %%>
 
-  <%% include ../partials/agent-full-search/mock-context %>
+  <link rel="stylesheet" href="css/CoveoFullSearchNewDesign.css" />
+
+  <%% include ../partials/agent-full-search/mock-context %%>
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      Coveo.SearchEndpoint.configureCloudV2Endpoint('<%%- config.coveo.org_id %>', '<%%- token %>', '<%%- config.coveo.rest_uri -%>');
-      Coveo.init<%= capitalizeCustomerSafeName %>Custo(document.getElementById('search'), {});
+      Coveo.SearchEndpoint.configureCloudV2Endpoint(
+        '<%%- config.coveo.org_id %%>',
+        '<%%- token %%>');
+
+      var searchInterfaceEl = document.getElementById('search');
+      var custo = new Coveo.<%= capitalizeCustomerSafeName %>Custo(searchInterfaceEl);
+      Coveo.options(searchInterfaceEl, Coveo._.extend({}, custo.getDefaultOptions()));
+
+      Coveo.init(searchInterfaceEl);
+
     })
   </script>
 </head>

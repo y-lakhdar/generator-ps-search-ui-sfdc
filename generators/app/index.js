@@ -96,6 +96,14 @@ module.exports = class extends Generator {
             customer: this.props.customer
         });
 
+        this.composeWith(require.resolve('../image'), {
+            customer: this.props.customer
+        });
+
+        this.composeWith(require.resolve('../fonts'), {
+            customer: this.props.customer
+        });
+
         this.composeWith(require.resolve('../vendor'), {
             customer: this.props.customer
         });
@@ -181,6 +189,12 @@ module.exports = class extends Generator {
             templateObj
         );
 
+        this.fs.copyTpl(
+            this.templatePath('webpack.sass.js'),
+            this.destinationPath('webpack.sass.js'),
+            templateObj
+        );
+
         // passports.js
         this.fs.copyTpl(
             this.templatePath('passports.js'),
@@ -197,16 +211,16 @@ module.exports = class extends Generator {
 
         // below files are required for azure deployment
         // TODO: add options in yeoman to prompt question if this project will be deployed to azure or not
-        this.fs.copyTpl(
-            this.templatePath('web.config'),
-            this.destinationPath('web.config'),
-            templateObj
-        );
-        this.fs.copyTpl(
-            this.templatePath('iisnode.yml'),
-            this.destinationPath('iisnode.yml'),
-            templateObj
-        );
+        // this.fs.copyTpl(
+        //     this.templatePath('web.config'),
+        //     this.destinationPath('web.config'),
+        //     templateObj
+        // );
+        // this.fs.copyTpl(
+        //     this.templatePath('iisnode.yml'),
+        //     this.destinationPath('iisnode.yml'),
+        //     templateObj
+        // );
     }
 
     install() {

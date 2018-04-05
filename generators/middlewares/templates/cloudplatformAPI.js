@@ -5,14 +5,15 @@ var config = require('../config');
 
 module.exports = {
   getSearchToken: (middlewareRequest, middlewareResponse, next) => {
-    const userids = _.map(config.coveo.users.split(','), user => {
+    const users = process.env.ADDITIONAL_USER || config.coveo.users;
+    const userids = _.map(users, user => {
       return { name: user, provider: 'Email Security Provider' };
     });
 
     const postData = {
-      userIds: userids,
-      searchHub: config.coveo.searchHub,
-      filter: config.coveo.filter || ''
+      userIds: process.env.FILTER_EXPRESSION || userids,
+      searchHub: process.env.SEARCH_HUB || config.coveo.searchHub,
+      filter: process.env.ADDITIONAL_USER || config.coveo.filter
     };
 
     request(
