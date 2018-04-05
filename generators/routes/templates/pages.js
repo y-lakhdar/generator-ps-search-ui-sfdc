@@ -4,6 +4,7 @@ const router = express.Router();
 const cfg = require('../config');
 const passport = require('../passports');
 const middleware = require('../middleware');
+const coveoPlatformApi = require('../utils/cloudPlatformAPI');
 
 router.use((req, res, next) => {
   req.filter = cfg.coveo.filter;

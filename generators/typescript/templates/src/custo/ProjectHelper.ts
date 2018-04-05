@@ -1,12 +1,10 @@
-declare function require(module: string);
-
 const SOURCE_ICONS_MAPPING: any = {
   'unknown': 'CoveoIcon'
 };
 
 export class I<%= capitalizeCustomerSafeName %>IconOptions {
-  value: string = null;
-  additionalClass: string = null;
+  value: string = '';
+  additionalClass: string = '';
 }
 
 export interface I<%= capitalizeCustomerSafeName %>KBExternalLinkOptions {
@@ -20,17 +18,17 @@ export class <%= capitalizeCustomerSafeName %>Helper {
   };
 
   static from<%= capitalizeCustomerSafeName %>TypeToIcon(result: Coveo.IQueryResult, options: I<%= capitalizeCustomerSafeName %>IconOptions): string {
-    var iconCss = options.value;
-    var hoverLabel = result.raw.commonsource || '';
+    let iconCss = options.value;
+    let hoverLabel = result.raw.commonsource || '';
     if (Coveo.Utils.isNullOrEmptyString(iconCss)) {
-      var commonSrc = (result.raw.commonsource || '').toLowerCase();
+      const commonSrc = (result.raw.commonsource || '').toLowerCase();
       iconCss = SOURCE_ICONS_MAPPING[commonSrc.toLowerCase()] || SOURCE_ICONS_MAPPING['unknown'];
 
-      if (commonSrc === 'knowledge base') {  // extra logic for KB 
+      if (commonSrc === 'knowledge base') {  // extra logic for KB
         iconCss = <%= capitalizeCustomerSafeName %>Helper.isAPublicKB(result) ? 'icon-external-knowledge-base' : 'icon-internal-knowledge-base';
         hoverLabel = <%= capitalizeCustomerSafeName %>Helper.isAPublicKB(result) ? 'External Knowledge Base' : 'Internal Knowledge Base';
-      } else if (commonSrc === 'community') { // extra logic for Community 
-        var question = result.raw.jivequestion ? result.raw.jivequestion.toLowerCase() : '';
+      } else if (commonSrc === 'community') { // extra logic for Community
+        const question = result.raw.jivequestion ? result.raw.jivequestion.toLowerCase() : '';
 
         iconCss = (question === 'true' && result.raw.jiveanswer != null) ? 'icon-community-discussion-answered' : iconCss;
         iconCss = (question === 'true' && (!result.raw.jiveanswer || result.raw.jiveanswer === 'False')) ? 'icon-community-discussion-unanswered' : iconCss;
@@ -47,9 +45,9 @@ export class <%= capitalizeCustomerSafeName %>Helper {
   }
 
   static customDate(d: Date): string {
-    var dateOnly = Coveo.DateUtils.keepOnlyDatePart(d);
-    var today = Coveo.DateUtils.keepOnlyDatePart(new Date());
-    var options: Coveo.IDateToStringOptions = {};
+    const dateOnly = Coveo.DateUtils.keepOnlyDatePart(d);
+    const today = Coveo.DateUtils.keepOnlyDatePart(new Date());
+    const options: Coveo.IDateToStringOptions = {};
 
     if (dateOnly.getFullYear() === today.getFullYear()) {
       options.predefinedFormat = 'MMM dd';
@@ -65,7 +63,7 @@ export class <%= capitalizeCustomerSafeName %>Helper {
     let lang = result.raw.sflanguage || '';
     if (kbArticleType) {
       kbArticleType = kbArticleType.replace(/__kav/i, '');
-      let kbUrlName = result.raw.sfkburlname || result.raw.sfknowledgebaseurlname || '';
+      const kbUrlName = result.raw.sfkburlname || result.raw.sfknowledgebaseurlname || '';
       let urlPath = kbArticleType + '/' + kbUrlName;
       lang = lang.substring(0, 2) || lang;
       urlPath = result.raw.commonlanguage.toLowerCase() == 'english' ? urlPath : (urlPath + '?lang=' + lang);

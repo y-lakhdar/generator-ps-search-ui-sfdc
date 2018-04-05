@@ -45,7 +45,7 @@ module.exports = {
                 res.on('data', (chunk) => body.push(chunk));
                 // we are done, resolve promise with those joined chunks
                 res.on('end', () => resolve(body.join('')));
-                
+
             });
             // handle connection errors of the request
             request.on('error', (err) => reject(err));
@@ -53,6 +53,6 @@ module.exports = {
             request.write(JSON.stringify(postData));
             request.end();
         });
-        
+
     }
 };

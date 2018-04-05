@@ -59,33 +59,31 @@ Scaffolds out a complete generator directory structure for you:
     |   |-- ui
     |-- vendor
     |   |-- coveo
-    |   |   |-- Box
-    |   |   |   |-- css
-    |   |   |   |   |-- CoveoBoxNew.css
-    |   |   |   |-- js
-    |   |   |       |-- CoveoJsSearch_Box.d.ts
-    |   |   |       |-- CoveoJsSearch_Box.js
-    |   |   |       |-- templates
-    |   |   |           |-- All.js
-    |   |   |           |-- Chatter.js
-    |   |   |           |-- Dropbox.js
-    |   |   |           |-- Email.js
-    |   |   |           |-- GoogleDrive.js
-    |   |   |           |-- Jira.js
-    |   |   |           |-- Lithium.js
-    |   |   |           |-- People.js
-    |   |   |           |-- Salesforce.js
-    |   |   |           |-- SharePoint.js
-    |   |   |           |-- YouTube.js
-    |   |   |           |-- box.new.templates.js
-    |   |   |-- resources
-    |   |       |-- css
-    |   |       |-- gulpTasks
-    |   |       |-- img
-    |   |       |-- js
-    |   |-- coveo-ps
-    |       |-- CoveoPSComponents.Custom.js
-    |       |-- CoveoPSComponents.Custom.js.map
+    |   |-- Box
+    |   |   |-- css
+    |   |   |   |-- CoveoBoxNew.css
+    |   |   |-- js
+    |   |       |-- CoveoJsSearch_Box.d.ts
+    |   |       |-- CoveoJsSearch_Box.js
+    |   |       |-- templates
+    |   |           |-- All.js
+    |   |           |-- Chatter.js
+    |   |           |-- Dropbox.js
+    |   |           |-- Email.js
+    |   |           |-- GoogleDrive.js
+    |   |           |-- Jira.js
+    |   |           |-- Lithium.js
+    |   |           |-- People.js
+    |   |           |-- Salesforce.js
+    |   |           |-- SharePoint.js
+    |   |           |-- YouTube.js
+    |   |           |-- box.new.templates.js
+    |   |-- resources
+    |       |-- css
+    |       |-- gulpTasks
+    |       |-- img
+    |       |-- js
+    
     |-- views
         |-- pages
         |   |-- agent-box.ejs

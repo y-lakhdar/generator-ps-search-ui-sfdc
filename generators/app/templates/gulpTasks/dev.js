@@ -15,6 +15,7 @@ const gulp = require('gulp');
 const path = require('path');
 
 gulp.task('dev', ['css', 'setup', 'watch'], function (done){
+    process.env.IS_DEV_SERVER = true;
     // set the view engine to ejs
     server.set('view engine', 'ejs');
 

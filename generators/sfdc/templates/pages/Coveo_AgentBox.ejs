@@ -4,7 +4,6 @@
 
   <CoveoV2:Box recordId="{!id}" debug="true" filter="" searchHub="AgentBox" name="Coveo_AgentBox"></CoveoV2:Box>
   <apex:stylesheet value="{!URLFOR($Resource.<%= capitalizeCustomerSafeName %>_Coveo_UI, '/css/AgentBox.<%= capitalizeCustomerSafeName %>.css')}" />
-  <apex:includeScript value="{!URLFOR($Resource.<%= capitalizeCustomerSafeName %>_Coveo_UI, '/vendor/coveo-ps/CoveoPSComponents.Custom.js')}" />
   <apex:includeScript value="{!URLFOR($Resource.<%= capitalizeCustomerSafeName %>_Coveo_UI, '/js/Coveo.<%= capitalizeCustomerSafeName %>.js')}" />
 
   <%% include ../../views/partials/agent-box/context %>

@@ -3,7 +3,6 @@
     <apex:stylesheet value="{!URLFOR($Resource.<%= capitalizeCustomerSafeName %>_Coveo_UI, '/css/AgentFullSearch.<%= capitalizeCustomerSafeName %>.css')}" />
     <apex:stylesheet value="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     
-    <apex:includeScript value="{!URLFOR($Resource.<%= capitalizeCustomerSafeName %>_Coveo_UI, '/vendor/coveo-ps/CoveoPSComponents.Custom.js')}" />
     <apex:includeScript value="{!URLFOR($Resource.<%= capitalizeCustomerSafeName %>_Coveo_UI, '/js/Coveo.<%= capitalizeCustomerSafeName %>.js')}" />
 
     <%% include ../../views/partials/agent-full-search/context %>

@@ -45,19 +45,19 @@ module.exports = class extends Generator {
             default: this.user.git.name(),
             store: true
         }, {
+            name: 'keywords',
+            message: 'Package keywords (comma to split)',
+            when: !this.props.keywords,
+            filter(words) {
+                return _.compact(words.split(/\s*,\s*/g));
+            }
+        }, {
             type: 'list',
             name: 'sourceControl',
             message: "Source Control",
             when: !this.props.sourceControl,
             default: 'Git',
             choices: ['Git', 'Mercurial']
-        }, {
-            name: 'keywords',
-            message: 'Package keywords (comma to split)',
-            when: !this.props.keywords,
-            filter(words) {
-              return _.compact(words.split(/\s*,\s*/g));
-            }
         }];
 
         return this.prompt(prompts).then(function (props) {

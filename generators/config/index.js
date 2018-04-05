@@ -22,7 +22,7 @@ module.exports = class extends Generator {
     }
 
     writing() {
-        const authorEmail = this.fs.readJSON(this.destinationPath('package.json')).author.email || 'platform@coveo.com';
+        const authorEmail = this.fs.readJSON(this.destinationPath('package.json')) && this.fs.readJSON(this.destinationPath('package.json')).author.email || 'platform@coveo.com';
 
         this.log('writing: ' + this.options.customer);
 

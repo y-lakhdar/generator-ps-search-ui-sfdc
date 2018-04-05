@@ -12,7 +12,6 @@
       ["String", "Avoid using the `String` type. Did you mean `string`?"],
       ["Symbol", "Avoid using the `Symbol` type. Did you mean `symbol`?"]
     ],
-    "class-name": true,
     "comment-format": [true, "check-space"],
     "curly": true,
     "eofline": true,
@@ -21,7 +20,6 @@
     "jsdoc-format": true,
     "label-position": true,
     "max-line-length": [false, 140],
-    "member-access": [true, "no-public"],
     "new-parens": true,
     "no-angle-bracket-type-assertion": true,
     "no-arg": true,
@@ -54,7 +52,6 @@
     "one-line": [true, "check-catch", "check-else", "check-finally", "check-open-brace", "check-whitespace"],
     "one-variable-per-declaration": [true, "ignore-for-loop"],
     "only-arrow-functions": [true, "allow-declarations", "allow-named-functions"],
-    "ordered-imports": [false],
     "prefer-const": true,
     "quotemark": [true, "single", "avoid-escape"],
     "radix": true,
