@@ -5,7 +5,6 @@ import IPreprocessResultsEventArgs = Coveo.IPreprocessResultsEventArgs;
 import InitializationEvents = Coveo.InitializationEvents;
 import INewQueryEventArgs = Coveo.INewQueryEventArgs;
 import QueryEvents = Coveo.QueryEvents;
-import { <%= capitalizeCustomerSafeName %>Helper, I<%= capitalizeCustomerSafeName %>IconOptions } from './<%= capitalizeCustomerSafeName %>Helper';
 
 export class <%= capitalizeCustomerSafeName %>Custo {
 
@@ -26,11 +25,6 @@ export class <%= capitalizeCustomerSafeName %>Custo {
     this.rootElement.on(QueryEvents.doneBuildingQuery, (e: Event, data: IDoneBuildingQueryEventArgs) => this.handleDoneBuildingQuery(e, data));
     this.rootElement.on(QueryEvents.preprocessResults, (e: Event, data: IPreprocessResultsEventArgs) => this.handlePreprocessResults(e, data));
     this.rootElement.on(QueryEvents.querySuccess, (e: Event, data: Coveo.IQuerySuccessEventArgs) => this.handleQuerySuccess(e, data));
-
-    // State Events
-
-    // Custom Events
-    // TODO
   }
 
   /**
@@ -46,18 +40,8 @@ export class <%= capitalizeCustomerSafeName %>Custo {
   }
   /**
    * After Component Initialization
-   * Registering custom template helper to manage custom icons. see result templates
    */
-  private handleAfterComponentsInit() {
-    Coveo.TemplateHelpers.registerTemplateHelper('from<%= capitalizeCustomerSafeName %>TypeToIcon', (result: Coveo.IQueryResult, options: I<%= capitalizeCustomerSafeName %>IconOptions) => {
-      return <%= capitalizeCustomerSafeName %>Helper.from<%= capitalizeCustomerSafeName %>TypeToIcon(result, options);
-    });
-
-    Coveo.TemplateHelpers.registerFieldHelper('customDate', (value: any, options: any) => {
-      return <%= capitalizeCustomerSafeName %>Helper.customDate(Coveo.DateUtils.convertFromJsonDateIfNeeded(value));
-    });
-
-  }
+  private handleAfterComponentsInit() { }
   /**
    * New Query
    */

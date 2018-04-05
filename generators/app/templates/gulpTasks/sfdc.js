@@ -7,12 +7,11 @@ const insert = require('gulp-insert');
 const ejs = require('gulp-ejs');
 const log = require('fancy-log');
 const livereload = require('gulp-livereload');
-const runsequence = require('run-sequence');
 const cfg = require('../config');
 
 gulp.task('prepareSfdc', ['prepareSfdcResourceBundles','prepareSfdcVfComponents', 'prepareSfdcVfPages', 'prepareSfdcLightningComponents', 'prepareSfdcClasses'])
 
-gulp.task('bundleSfdc',['zip-staticresources']);
+gulp.task('bundleSfdc', ['zip-staticresources']);
 
 gulp.task('deploySfdc', ['deploy-staticresources', 'deploy-staticresources-unpackaged', 'deploy-staticresources-bundles', 'deploy-vfcomponents', 'deploy-vfpages', 'deploy-lightningcomponents', 'deploy-classes']);
 

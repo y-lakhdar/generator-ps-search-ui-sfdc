@@ -2,20 +2,21 @@
 <html>
 
 <head>
-  <title>Community Search</title>
+  <title><%- title %></title>
   <meta about="Search all content at once." />
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, height=device-height">
-  <% if (process.env.IS_DEV_SERVER) { %>
+  <% if (production) { %>
+  <script type="application/javascript" src="js/CoveoJsSearch.Lazy.min.js"></script>
+  <script src="js/Coveo.<%= capitalizeCustomerSafeName %>min.js"></script>
+  <link rel="stylesheet" href="css/Coveo.<%= capitalizeCustomerSafeName %>.min.css" />
+  <% } else { %>
   <script type="application/javascript" src="js/CoveoJsSearch.Lazy.js"></script>
   <script src="js/Coveo.<%= capitalizeCustomerSafeName %>.js"></script>
-  <% } else { %>
-  <script type="application/javascript" src="js/CoveoJsSearch.Lazy.min.js"></script>
-  <script src="js/Coveo.<%= capitalizeCustomerSafeName %>.min.js"></script>
   <% } %>
+
   <link rel="stylesheet" href="css/CoveoFullSearchNewDesign.css" />
-  <link rel="stylesheet" href="css/CommunitySearch.<%= capitalizeCustomerSafeName %>.css" />
 
   <%% include ../partials/community-search/mock-context %>
 

@@ -188,12 +188,6 @@ module.exports = class extends Generator {
             templateObj
         );
 
-        // middleware.js
-        this.fs.copyTpl(
-            this.templatePath('middleware.js'),
-            this.destinationPath('middleware.js'),
-            templateObj
-        );
         // server.js
         this.fs.copyTpl(
             this.templatePath('server.js'),

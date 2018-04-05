@@ -4,15 +4,12 @@ config.env = 'production';
 
 //Coveo
 config.coveo.api_key = '';
+config.coveo.api_key = '';
 config.coveo.superUser_api_key = '';
+config.coveo.expired_token = '';
 config.coveo.org_id = '';
-config.coveo.searchHub = {
-  'default_searchHub': 'pilot',
-  '/pilot-search': 'pilot',
-  '/full-search': 'pilot'
-};
-config.coveo.filter = {
-  "default_filter": process.env.FILTER_EXPRESSION || ''
-};
+config.coveo.searchHub = '';
+config.coveo.filter = '';
+config.coveo.users = ['platform@coveo.com'];
 
 module.exports = config;

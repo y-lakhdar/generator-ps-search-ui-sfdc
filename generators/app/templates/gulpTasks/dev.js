@@ -1,68 +1,46 @@
 'use strict';
-const express = require('express');
-const bodyParser = require('body-parser');
-const session = require('express-session');
-const compression = require('compression');
-const methodOverride = require('method-override');
-const cookieParser = require('cookie-parser');
-const server = express();
-const cfg = require('../config');
-const passport = require('../passports');
+const _ = require('underscore');
+const middlewares = require('./middlewares/cloudPlatformAPI');
+const config = require('dotenv').config({ path: 'variables.env' }).parsed;
+const argv = require('yargs').argv;
+const port = argv.port || 8081;
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
-const webpackConfig = require('../webpack.config.js');
-const gulp = require('gulp');
-const path = require('path');
+const webpackConfig = require('./webpack.config.js');
 
-gulp.task('dev', ['css', 'setup', 'watch'], function (done){
-    process.env.IS_DEV_SERVER = true;
-    // set the view engine to ejs
-    server.set('view engine', 'ejs');
+gulp.task('dev', (done) => {
 
-
-    if(cfg.iow_path){
-        server.use('/iow', express.static(path.resolve(cfg.iow_path)));
-    }
-
-    server.use(compression());
-    server.use(methodOverride());
-    server.use(cookieParser());
-    server.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: false, cookie: { maxAge: 3600*1000 } }));
-    server.use(bodyParser.json());
-    server.use(bodyParser.urlencoded({ extended: true }));
-
-    server.use(passport.initialize());
-    server.use(passport.session());
-
-    server.use(express.static(path.resolve('./public')));
-    server.use(require(path.resolve('./routes/authentication')));
-    server.use(require(path.resolve('./routes/errors')));
-
-    // passport.protected middleware can be used to protect/secure your routes
-    //server.use('/', passport.protected);
-    server.use(require(path.resolve('./routes/pages')));
-    
-    server.listen(cfg.server_port, cfg.server_ip_address, function () {
-        console.log( 'Listening on ' + cfg.server_ip_address + ', port ' + cfg.server_port )
+  _.mapObject(webpackConfig.entry, (value, key) => {
+      value.unshift(`webpack-dev-server/client?http://localhost:${port}/`);
     });
 
-    webpackConfig.entry['Coveo.<%= capitalizeCustomerSafeName %>'].unshift('webpack-dev-server/client?http://localhost:3001/');
     const compiler = webpack(webpackConfig);
+    const devServerOptions = Object.assign({}, webpackConfig.devServer, {
+      stats: {
+        colors: true
+      },
+      contentBase: './bin/',
+      publicPath: '/js/',
+      compress: true,
+      before(app) {
+        app.set('view engine', 'ejs');
 
-    new WebpackDevServer(compiler, {
-        hot:true,
-        historyApiFallback: true,
-        contentBase: 'public/',
-        publicPath: '/js/',
-        compress: true,
-        proxy: {
-            '*': 'http://' + cfg.server_ip_address + ':' + cfg.server_port
-        }
-    }).listen(3001, cfg.server_ip_address, function (err, result){
-        if(err){
-            console.log(err);
-        }
-        console.log('Listening at ' + cfg.server_ip_address + ':3001' )
+        app.use((req, res, next) => {
+          req.filter = cfg.coveo.filter;
+          next();
+        });
+
+        app.use(require('./routes/pages'));
+      }
     });
-    done();
+
+    const webpackServer = new WebpackDevServer(compiler, devServerOptions);
+
+    webpackServer.listen(port, (err, res) => {
+      if (err) {
+        console.log(err);
+      }
+      console.log(`Webpack Dev Server started: Listening on http://localhost:${port}`);
+      done();
+    });
 });
