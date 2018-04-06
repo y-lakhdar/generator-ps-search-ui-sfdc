@@ -1,0 +1,22 @@
+$resizeBreakpointMobile: 480px;
+$resizeBreakpointSmall: 575px;
+$resizeBreakpointMedium: 767px;
+
+/*------------------------------------*\
+    Colors
+\*------------------------------------*/
+$white: #fff;
+$black: #000;
+
+/*------------------------------------*\
+    Images
+\*------------------------------------*/
+
+$png-images-path: '#{$root-path}image/png';
+
+/*------------------------------------*\
+    Typography
+\*------------------------------------*/
+
+$default-font-path: '#{$root-path}fonts';
+$base-font-family: '"Lato", "Helvetica Neue", Helvetica, Arial, sans-serif, sans-serif';

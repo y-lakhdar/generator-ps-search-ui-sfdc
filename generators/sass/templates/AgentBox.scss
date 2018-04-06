@@ -1,14 +1,23 @@
-@import './ui/_SearchInterface';
-@import './ui/_Searchbox';
-@import './ui/_Header';
-@import './ui/_Checkboxes';
-@import './ui/_Facets';
-@import './ui/_Tabs';
-@import './ui/_Sorts';
-@import './ui/_ResultLayout';
-@import './ui/_ResultList';
-@import './ui/_RecommendedResultList';
-@import './ui/_Breadcrumb';
-@import './ui/_Quickview';
-@import './ui/_Icons';
-@import './ui/_Pagination';
+@import './base/reset';
+@import './base/variables';
+@import './base/colors';
+
+@import './utils/display';
+
+@import './helpers/mixins';
+@import './helpers/functions';
+
+@import './components/_SearchInterface';
+@import './components/_Searchbox';
+@import './components/_Header';
+@import './components/_Checkboxes';
+@import './components/_Facets';
+@import './components/_Tabs';
+@import './components/_Sorts';
+@import './components/_ResultLayout';
+@import './components/_ResultList';
+@import './components/_RecommendedResultList';
+@import './components/_Breadcrumb';
+@import './components/_Quickview';
+@import './components/_Icons';
+@import './components/_Pagination';
