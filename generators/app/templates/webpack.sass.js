@@ -1,7 +1,7 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const configureSassForProduction = (additionalRules, plugins, production) => {
-  const cssFilename = production ? `../css/[name].min.css` : `../css/[name].css`;
+  const cssFilename = production ? `../css/Coveo.<%= capitalizeCustomerSafeName %>[name].min.css` : `../css/Coveo.<%= capitalizeCustomerSafeName %>[name].css`;
   const extractSass = new ExtractTextPlugin({
     filename: cssFilename
   });

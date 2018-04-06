@@ -2,21 +2,39 @@
 <html>
 
 <head lang="en">
-    <meta charset="UTF-8">
-    <title>Agent Box</title>    
-    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src="js/CoveoJsSearch.js"></script>
+    <title><%%- title %%></title>
+    <meta about="Search all content at once." />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, height=device-height">
+    <link rel="shortcut icon" type="image/png" href="https://platform.cloud.coveo.com/public/favicon/favicon.ico"/>
+    <link rel="stylesheet" href="https://static.cloud.coveo.com/searchui/v2.3679/css/CoveoFullSearch.css" />
+    <%% if (production) { %%>
+    <!-- Coveo JS Search Framework Minified JS (lazy version) -->
+    <script src="https://static.cloud.coveo.com/searchui/v2.3679/js/CoveoJsSearch.Lazy.min.js"></script>
+    <!-- Coveo JS Search Framework Minified JS (eager version) -->
+    <!--<script src="https://static.cloud.coveo.com/searchui/v2.3679/js/CoveoJsSearch.min.js"></script>-->
+    <script src="js/Coveo.<%= capitalizeCustomerSafeName %>AgentBox.min.js"></script>
+    <link rel="stylesheet" href="css/Coveo.<%= capitalizeCustomerSafeName %>AgentBox.min.css" />
+    <%% } else { %%>
+    <!-- Coveo JS Search Framework JS (lazy version) -->
+    <script src="https://static.cloud.coveo.com/searchui/v2.3679/js/CoveoJsSearch.Lazy.js"></script>
+    <!-- Coveo JS Search Framework JS (eager version) -->
+    <!--<script src="https://static.cloud.coveo.com/searchui/v2.3679/js/CoveoJsSearch.js"></script>-->
+    <script src="js/Coveo.<%= capitalizeCustomerSafeName %>AgentBox.js"></script>
+    <%% } %%>
+
+    <!-- TODO: resolve those files -->
     <script src="js/components.js"></script>
     <script src="js/CoveoJsSearch_Box.js"></script>
-    <script src="js/Coveo.<%= capitalizeCustomerSafeName %>.js"></script>
     <script src="js/box.new.templates.js"></script>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://static.cloud.coveo.com/searchui/v2.3679/css/CoveoFullSearch.css" />
     <link rel="stylesheet" href="css/CoveoBoxNew.css" />
-    <link rel="stylesheet" href="css/AgentBox.<%= capitalizeCustomerSafeName %>.css" />
+
+    <!-- Coveo JS Search Framework result templates -->
+    <script src="https://static.cloud.coveo.com/searchui/v2.3679/js/templates/templates.js"></script>
 
     <%% include ../partials/agent-box/mock-context %>
-    
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
         Coveo.SearchEndpoint.configureCloudV2Endpoint('<%%- config.coveo.org_id %>', '<%%- token %>', '<%%- config.coveo.rest_uri -%>');

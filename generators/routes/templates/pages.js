@@ -5,7 +5,7 @@ const cfg = require('../config');
 const coveoPlatformApi = require('../middlewares/cloudPlatformAPI');
 
 app.get('/', (req, res) => {
-  res.redirect('/standalone-search');
+  res.redirect('/community-search');
 });
 
 app.get('/:name', coveoPlatformApi.getSearchToken, (req, res) => {

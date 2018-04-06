@@ -4,8 +4,6 @@ const path = require('path');
 const ReloadPlugin = require('reload-html-webpack-plugin');
 const production = process.env.NODE_ENV === 'production';
 
-console.log('Building resources for production: ', production);
-
 const configureSassForDev = require('./webpack.sass').configureSassForDev;
 const configureSassForProduction = require('./webpack.sass').configureSassForProduction;
 
@@ -31,12 +29,16 @@ if (!production) {
 }
 
 module.exports = {
-  entry: [path.resolve('./src/Index')],
+  entry: {
+    CommunitySearch: [path.resolve('./src/CommunitySearch')],
+    AgentBox: [path.resolve('./src/AgentBox')],
+    AgentFullSearch: [path.resolve('./src/AgentFullSearch')]
+  },
   output: {
     path: path.resolve(__dirname, 'bin/js'),
-    filename: production ? `Coveo.<%= capitalizeCustomerSafeName %>.min.js` : `Coveo.<%= capitalizeCustomerSafeName %>.js`,
+    filename: production ? `Coveo.<%= capitalizeCustomerSafeName %>[name].min.js` : `Coveo.<%= capitalizeCustomerSafeName %>[name].js`,
     libraryTarget: 'umd',
-    library: 'CoveoExtension',
+    library: '[name]',
     publicPath: './'
   },
   resolve: {

@@ -23,7 +23,7 @@ module.exports = class extends Generator {
     }
 
     writing() {
-        const templateObj = { 
+        const templateObj = {
           customerSafeName : this.props.customerSafeName,
           capitalizeCustomerSafeName : this.props.customerSafeName.replace(/\b\w/g, l => l.toUpperCase()),
         }
@@ -32,42 +32,56 @@ module.exports = class extends Generator {
         this.fs.copyTpl(
           this.templatePath('src/custo/ProjectCusto.ts'),
           this.destinationPath(path.join('src', 'custo', templateObj.capitalizeCustomerSafeName + 'Custo.ts')),
-          templateObj 
+          templateObj
         );
 
         // Helper
         this.fs.copyTpl(
           this.templatePath('src/custo/ProjectHelper.ts'),
           this.destinationPath(path.join('src', 'custo', templateObj.capitalizeCustomerSafeName + 'Helper.ts')),
-          templateObj 
+          templateObj
         );
 
         // RegisteredNamedMethods
         this.fs.copyTpl(
           this.templatePath('src/custo/ProjectRegisteredNamedMethods.ts'),
           this.destinationPath(path.join('src', 'custo', templateObj.capitalizeCustomerSafeName + 'RegisteredNamedMethods.ts')),
-          templateObj 
+          templateObj
         );
 
-        // Index.ts
+        // AgentBox.ts
         this.fs.copyTpl(
-          this.templatePath('src/Index.ts'),
-          this.destinationPath('src/Index.ts'),
-          templateObj 
+          this.templatePath('src/AgentBox.ts'),
+          this.destinationPath('src/AgentBox.ts'),
+          templateObj
+        );
+
+        // AgentFullSearch.ts
+        this.fs.copyTpl(
+          this.templatePath('src/AgentFullSearch.ts'),
+          this.destinationPath('src/AgentFullSearch.ts'),
+          templateObj
+        );
+
+        // CommunitySearch.ts
+        this.fs.copyTpl(
+          this.templatePath('src/CommunitySearch.ts'),
+          this.destinationPath('src/CommunitySearch.ts'),
+          templateObj
         );
 
         // ProjectCore.ts
         this.fs.copyTpl(
           this.templatePath('src/ProjectCore.ts'),
           this.destinationPath(path.join('src', '', templateObj.capitalizeCustomerSafeName + 'Core.ts')),
-          templateObj 
+          templateObj
         );
 
         // SwapVar.ts
         this.fs.copyTpl(
           this.templatePath('src/SwapVar.ts'),
           this.destinationPath('src/SwapVar.ts'),
-          templateObj 
+          templateObj
         );
 
         this.fs.copy(
@@ -81,6 +95,6 @@ module.exports = class extends Generator {
         );
 
         mkdirp.sync(this.destinationPath('src/ui'));
-        
+
     }
 }
