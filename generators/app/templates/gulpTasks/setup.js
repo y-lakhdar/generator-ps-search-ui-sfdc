@@ -6,8 +6,6 @@ gulp.task('setup', ['preparePages', 'copy']);
 
 gulp.task('copy', ['copyVendor', 'copyServer']);
 
-gulp.task('sfdc', ['prepareSfdc']);
-
 gulp.task('preparePages', function () {
     gulp.src(['views/pages/*.ejs'])
         .pipe(ejs({

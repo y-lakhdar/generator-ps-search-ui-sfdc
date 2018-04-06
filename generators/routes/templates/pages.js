@@ -5,19 +5,31 @@ const cfg = require('../config');
 const coveoPlatformApi = require('../middlewares/cloudPlatformAPI');
 
 app.get('/', (req, res) => {
-  res.render('pages/home');
+  res.redirect('/standalone-search');
 });
 
 app.get('/:name', coveoPlatformApi.getSearchToken, (req, res) => {
   var name = req.params.name;
+
   if (name) {
-    res.render(`pages/${name}`, {
-      config: config,
-      token: req.token,
-      production: process.env.NODE_ENV == 'production'
-    });
+    res.render(
+      `pages/${name}`,
+      {
+        title: name.replace(/-/g, ' '),
+        config: cfg,
+        token: req.token,
+        production: process.env.NODE_ENV == 'production'
+      },
+      (err, html) => {
+        if (err) {
+          res.status(404).send('Page not found');
+        } else {
+          res.send(html);
+        }
+      }
+    );
   } else {
-    res.redirect('/');
+    res.status(400).send('Bad Request: Missing page name');
   }
 });
 

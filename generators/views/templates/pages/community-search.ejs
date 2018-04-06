@@ -7,16 +7,25 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, height=device-height">
+  <link rel="shortcut icon" type="image/png" href="https://platform.cloud.coveo.com/public/favicon/favicon.ico"/>
   <%% if (production) { %%>
-  <script type="application/javascript" src="js/CoveoJsSearch.Lazy.min.js"></script>
-  <script src="js/Coveo.<%= capitalizeCustomerSafeName %>min.js"></script>
+  <!-- Coveo JS Search Framework Minified JS (lazy version) -->
+  <script src="https://static.cloud.coveo.com/searchui/v2.3679/js/CoveoJsSearch.Lazy.min.js"></script>
+  <!-- Coveo JS Search Framework Minified JS (eager version) -->
+  <!--<script src="https://static.cloud.coveo.com/searchui/v2.3679/js/CoveoJsSearch.min.js"></script>-->
+  <script src="js/Coveo.<%= capitalizeCustomerSafeName %>.min.js"></script>
   <link rel="stylesheet" href="css/Coveo.<%= capitalizeCustomerSafeName %>.min.css" />
   <%% } else { %%>
-  <script type="application/javascript" src="js/CoveoJsSearch.Lazy.js"></script>
+  <!-- Coveo JS Search Framework JS (lazy version) -->
+  <script src="https://static.cloud.coveo.com/searchui/v2.3679/js/CoveoJsSearch.Lazy.js"></script>
+  <!-- Coveo JS Search Framework JS (eager version) -->
+  <!--<script src="https://static.cloud.coveo.com/searchui/v2.3679/js/CoveoJsSearch.js"></script>-->
   <script src="js/Coveo.<%= capitalizeCustomerSafeName %>.js"></script>
   <%% } %%>
 
-  <link rel="stylesheet" href="css/CoveoFullSearchNewDesign.css" />
+  <!-- Coveo JS Search Framework result templates -->
+  <script src="https://static.cloud.coveo.com/searchui/v2.3679/js/templates/templates.js"></script>
+  <link rel="stylesheet" href="https://static.cloud.coveo.com/searchui/v2.3679/css/CoveoFullSearch.css" />
 
   <%% include ../partials/community-search/mock-context %%>
 

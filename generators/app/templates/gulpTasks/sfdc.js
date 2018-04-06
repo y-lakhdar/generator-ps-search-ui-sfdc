@@ -7,6 +7,8 @@ const ejs = require('gulp-ejs');
 const log = require('fancy-log');
 const cfg = require('../config');
 
+gulp.task('sfdc', ['prepareSfdc']);
+
 gulp.task('prepareSfdc', ['prepareSfdcResourceBundles','prepareSfdcVfComponents', 'prepareSfdcVfPages', 'prepareSfdcLightningComponents', 'prepareSfdcClasses'])
 
 gulp.task('bundleSfdc', ['zip-staticresources']);

@@ -8,9 +8,7 @@ const webpackConfig = require('./../webpack.config.js');
 
 gulp.task('dev', (done) => {
 
-  _.mapObject(webpackConfig.entry, (value, key) => {
-      value.unshift(`webpack-dev-server/client?http://localhost:${cfg.server_port}/`);
-    });
+    webpackConfig.entry.unshift(`webpack-dev-server/client?http://localhost:${cfg.server_port}/`);
 
     const compiler = webpack(webpackConfig);
     const devServerOptions = Object.assign({}, webpackConfig.devServer, {

@@ -17,7 +17,7 @@ module.exports = {
     };
 
     request(
-      `https://${config.cloud_platform_host}/rest/search/token`,
+      `https://${config.coveo.cloud_platform_host}/rest/search/token`,
       {
         auth: { bearer: config.coveo.api_key },
         json: true,
@@ -30,7 +30,7 @@ module.exports = {
           next(err);
         } else {
           if (res.statusCode < 200 || res.statusCode > 299) {
-            next(new Error('Failed to load page, status code: ' + res.statusCode));
+            next(JSON.stringify(res, null, 2));
           }
           middlewareRequest.token = res.token;
           next();

@@ -12,7 +12,7 @@ import {
 
 export class <%= capitalizeCustomerSafeName %>Custo {
 
-  private rootElement: Coveo.Dom;
+  private rootElement: Dom;
 
   constructor(public searchInterfaceElement: HTMLElement) {
 
