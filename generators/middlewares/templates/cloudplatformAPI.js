@@ -11,9 +11,9 @@ module.exports = {
     });
 
     const postData = {
-      userIds: process.env.FILTER_EXPRESSION || userids,
+      userIds: process.env.ADDITIONAL_USER || userids,
       searchHub: process.env.SEARCH_HUB || config.coveo.searchHub,
-      filter: process.env.ADDITIONAL_USER || config.coveo.filter
+      filter: process.env.FILTER_EXPRESSION || config.coveo.filter
     };
 
     request(
