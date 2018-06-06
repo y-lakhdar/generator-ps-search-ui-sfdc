@@ -21,7 +21,7 @@ const configureSassForProduction = (additionalRules, plugins, production) => {
           loader: 'sass-loader',
           options: {
             sourceMap: true,
-            data: '$root-path: "../../";'
+            data: '$root-path: "../";'
           }
         }
       ],
@@ -45,7 +45,7 @@ const configureSassForDev = (additionalRules, plugins, production) => {
       {
         loader: 'sass-loader',
         options: {
-          data: '$root-path: "../../";'
+          data: '$root-path: "../";'
         }
       }
     ]
