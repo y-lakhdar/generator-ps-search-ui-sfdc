@@ -1,240 +1,150 @@
 <script>
-  Coveo.Salesforce = {};
-  Coveo.Salesforce.fullPageUri = 'http://ces.corp.coveo.com/js'
+  window['SalesforceContext'] = {
+    fullPageUri: "/apex/coveov2__search",
+    record: {
+      user__usertype: "Standard",
+      user__userroleid: "00E15000000EwO2EAK",
+      user__username: "coveocrawlerintegration@coveo.com.dev03",
+      user__userid: "0050R000000hnMRQAY",
+      user__useremail: "tc-scadmins@dummy.com",
+      user__name: "CoveoCrawlerIntegration User",
+      user__locale: "en_US",
+      user__language: "en_US",
+      user__profile: "00e15000001H6OoAAK",
+      user__lastname: "User",
+      user__firstname: "CoveoCrawlerIntegration",
+      support_product_version__c: null,
+      symptoms_objectives__c: null,
+      cause__c: null,
+      environment__c: null,
+      visitid__c: null,
+      cabh__c: 0.04,
+      cabh_indicator__c:
+        '<img src="/resource/1454338417000/AR_Green_Icon" alt="Green" style="height:30px; width:30px;" border="0"/>',
+      suggested_kb_article__c: null,
+      survey_reference__c: null,
+      survey_formula__c: '<a href=" " target="_blank"> </a>',
+      survey_case__c: null,
+      escalation_reason__c: null,
+      discussion_group_id__c: null,
+      support_product_name__c: "ProSystem fx Tax Efile",
+      support_product_family_name__c: "Prosystem FX",
+      indirect_arrival__c: null,
+      case_queue__c: null,
+      product_version__c: null,
+      objectrouting__skills__c: null,
+      objectrouting__originating_queue__c: null,
+      legecy_created_date__c: null,
+      legecy_closed_date__c: null,
+      date_closed__c: null,
+      created_date__c: "2018-05-10T16:00:32.000Z",
+      case_internal_only__c: false,
+      priority__c: null,
+      escalation__c: null,
+      case_number_external_id__c: null,
+      wk_employee__c: null,
+      support_taxform__c: null,
+      support_product__c: "a051500000JqtxhAAB",
+      support_product_reason__c: null,
+      support_product_reason_classification__c: null,
+      support_product_family__c: "a021500000FfgvKAAR",
+      support_customer_interaction__c: null,
+      support_category__c: "How To",
+      sub_status__c: null,
+      in_progress_time__c: null,
+      case_age__c: 647,
+      account_number__c: null,
+      sub_status_2__c: null,
+      sub_status_1__c: null,
+      is_urgent__c: false,
+      issue_summary__c: null,
+      area__c: null,
+      category__c: null,
+      detail__c: null,
+      reason__c: null,
+      account_contact_relation__c: null,
+      product__c: null,
+      product_family__c: null,
+      reference__c: null,
+      place_on_hold__c: false,
+      follow_up__c: null,
+      cust_case_comment__c: null,
+      cases__c: 1,
+      reference_type__c: "Escalation/GSR",
+      last_case_comment__c: null,
+      resolution__c: null,
+      creatorname: null,
+      creatorsmallphotourl:
+        "https://xxxxxxx--Dev03--c.cs94.content.force.com/profilephoto/005/T",
+      creatorfullphotourl:
+        "https://xxxxxxx--Dev03--c.cs94.content.force.com/profilephoto/005/F",
+      milestonestatus: "",
+      lastreferenceddate: "2018-06-06T14:52:13.000Z",
+      lastvieweddate: "2018-06-06T14:52:13.000Z",
+      systemmodstamp: "2018-05-11T10:37:48.000Z",
+      lastmodifiedbyid: "0050R000000hnMRQAY",
+      lastmodifieddate: "2018-05-10T16:02:52.000Z",
+      createdbyid: "0050R000000hnMRQAY",
+      createddate: "2018-05-10T16:00:32.000Z",
+      stopstartdate: null,
+      isstopped: false,
+      slaexitdate: null,
+      slastartdate: null,
+      isselfserviceclosed: false,
+      isclosedoncreate: false,
+      ownerid: "0050R000000hnMRQAY",
+      hasselfservicecomments: false,
+      hascommentsunreadbyowner: false,
+      isescalated: false,
+      closeddate: null,
+      isclosed: false,
+      description: "dummy case",
+      priority: "Minimal Business Impact",
+      subject: "test case 2",
+      isvisibleinselfservice: true,
+      origin: "Phone-Inbound",
+      reason: null,
+      status: "In Progress",
+      recordtypeid: "01215000001URKVAA4",
+      type: null,
+      suppliedcompany: null,
+      suppliedphone: null,
+      suppliedemail: null,
+      suppliedname: null,
+      parentid: null,
+      businesshoursid: "01m15000000934KAAQ",
+      communityid: null,
+      feeditemid: null,
+      questionid: null,
+      entitlementid: null,
+      productid: null,
+      assetid: null,
+      accountid: null,
+      contactid: null,
+      casenumber: "11840695",
+      isdeleted: false,
+      id: "5000R000001rO6uQAE"
+    },
+    type: "case",
+    knowledgeArticleInfos: {
+      types: [
+        { type: "qa_article_type__kav", label: "QA Article Type" },
+        { type: "how_to_s_article_type__kav", label: "How To Article Type" },
+        {
+          type: "problem_resolution_article_type__kav",
+          label: "Problem Resolution Article Type"
+        },
+        {
+          type: "documentation_article_type__kav",
+          label: "Documentation Article Type"
+        },
+        { type: "wkarticletype__kav", label: "WK Article Type" }
+      ],
+      isKnowledgeEnabled: true
+    }
+  };
 
-  Coveo.context = Coveo.Salesforce.record = {
-    "user__usertype": "Standard",
-    "user__userroleid": null,
-    "user__username": "developer@<%= customerSafeName %>.devorg",
-    "user__userid": "0050l000000SjVVAA0",
-    "user__useremail": "developer@coveo.com",
-    "user__name": "developerfirstname developerlastname",
-    "user__locale": "en_AU",
-    "user__language": "en_US",
-    "user__profile": "00e28000000iECZAA2",
-    "user__lastname": "developerlastname",
-    "user__firstname": "developerfirstname",
-    "milestonestatus": "Open Violation",
-    "lastreferenceddate": "2017-07-26T15:20:15.000Z",
-    "lastvieweddate": "2017-07-26T15:20:15.000Z",
-    "systemmodstamp": "2017-07-26T10:31:22.000Z",
-    "lastmodifiedbyid": "0050l000000QSgcAAG",
-    "lastmodifieddate": "2017-07-10T13:16:32.000Z",
-    "createdbyid": "0050l000000QSgcAAG",
-    "createddate": "2017-06-28T06:54:23.000Z",
-    "stopstartdate": null,
-    "isstopped": false,
-    "slaexitdate": "2017-07-05T09:39:51.000Z",
-    "slastartdate": "2017-06-28T06:54:23.000Z",
-    "ownerid": "00G0l000000QxG8EAK",
-    "isescalated": false,
-    "closeddate": "2017-07-05T09:39:50.000Z",
-    "isclosed": true,
-    "description": null,
-    "priority": "Standard",
-    "subject": null,
-    "origin": "Email",
-    "reason": null,
-    "status": "Closed",
-    "recordtypeid": "0120l0000008VxlAAE",
-    "type": null,
-    "suppliedcompany": null,
-    "suppliedphone": null,
-    "suppliedemail": null,
-    "suppliedname": null,
-    "parentid": null,
-    "businesshoursid": "01m28000000PHQYAA4",
-    "entitlementid": "5500l0000008OZBAA2",
-    "accountid": "0010l000002YZbeAAG",
-    "contactid": "0030l000001aUwHAAU",
-    "casenumber": "00001269",
-    "isdeleted": false,
-    "id": "5000l000000VDY6AAO"
-  }
-
-  Coveo.Salesforce.fieldLabels = {
-    "AssetId": "Asset ID",
-    "SuppliedCompany": "Company",
-    "Id": "Case ID",
-    "ContactId": "Contact ID",
-    "IsDeleted": "Deleted",
-    "HasCommentsUnreadByOwner": "New Self-Service Comment",
-    "CreatedDate": "Created Date",
-    "CreatedById": "Created By ID",
-    "AccountId": "Account ID",
-    "SuppliedEmail": "Email Address",
-    "Status": "Status",
-    "Priority": "Priority",
-    "ClosedDate": "Closed Date",
-    "Subject": "Subject",
-    "LastModifiedById": "Last Modified By ID",
-    "Description": "Description",
-    "Reason": "Case Reason",
-    "CaseNumber": "Case Number",
-    "SystemModstamp": "System Modstamp",
-    "IsClosed": "Closed",
-    "IsEscalated": "Escalated",
-    "HasSelfServiceComments": "Self-Service Commented",
-    "SuppliedName": "Name",
-    "Origin": "Case Origin",
-    "SuppliedPhone": "Phone",
-    "LastModifiedDate": "Last Modified Date",
-    "OwnerId": "Owner ID",
-    "Type": "Case Type",
-    "ParentId": "Parent Case ID"
-  }
-
-  Coveo.Salesforce.coveoFieldNames = [
-    "@sfemaildomainnames",
-    "@concepts",
-    "@from",
-    "@participants",
-    "@sfaccount",
-    "@sfamountconverted",
-    "@sfcasenumber",
-    "@sfclosequarter",
-    "@sfcountry",
-    "@sfindustry",
-    "@sfshippingcity",
-    "@sfshippingstate",
-    "@sfstagename",
-    "@sfstatus",
-    "@title",
-    "@workemail",
-    "@uri"
-  ]
-
-  Coveo.Salesforce.extensions = [{
-    "name": "join",
-    "argumentNames": ["fromResultSet", "toResultSet", "fromField", "toField", "field", "fromAggregateConditions",
-      "maximumValues"
-    ]
-  }, {
-    "name": "sum",
-    "argumentNames": ["resultSet", "field"]
-  }, {
-    "name": "aggregate",
-    "argumentNames": ["resultSet", "field", "operation"]
-  }, {
-    "name": "average",
-    "argumentNames": ["resultSet", "field"]
-  }, {
-    "name": "minimum",
-    "argumentNames": ["resultSet", "field"]
-  }, {
-    "name": "maximum",
-    "argumentNames": ["resultSet", "field"]
-  }, {
-    "name": "queryRankingExpression",
-    "argumentNames": ["expression", "modifier"]
-  }, {
-    "name": "resultsOfType",
-    "argumentNames": ["name"]
-  }, {
-    "name": "valuesOfField",
-    "argumentNames": ["resultSet", "field", "aggregateConditions", "maximum", "sortOrder"]
-  }, {
-    "name": "keepMatchingValues",
-    "argumentNames": ["regex", "values"]
-  }, {
-    "name": "removeMatchingValues",
-    "argumentNames": ["regex", "values"]
-  }, {
-    "name": "removeEmptyValues",
-    "argumentNames": ["values"]
-  }, {
-    "name": "removeDuplicateValues",
-    "argumentNames": ["values"]
-  }, {
-    "name": "replaceInValues",
-    "argumentNames": ["regex", "replacement", "values", "removeNonMatchingValues", "removeEmptyValues",
-      "removeDuplicateValues"
-    ]
-  }, {
-    "name": "mergeValues",
-    "argumentNames": ["first", "second"]
-  }, {
-    "name": "valuesToResultSet",
-    "argumentNames": ["values", "field"]
-  }, {
-    "name": "joinOnValues",
-    "argumentNames": ["resultSet", "field", "values"]
-  }, {
-    "name": "filterJoin",
-    "argumentNames": ["localResultSet", "externalResultSet", "localField", "externalField", "field",
-      "aggregateConditions", "maximumValues"
-    ]
-  }, {
-    "name": "correlateListOfValues",
-    "argumentNames": ["values", "field", "modifier", "useFullText", "forceOneMatch"]
-  }, {
-    "name": "correlateResultSet",
-    "argumentNames": ["resultSet", "fromField", "toField", "field", "maximumValues", "sortOrder", "modifier",
-      "useFullText", "forceOneMatch"
-    ]
-  }, {
-    "name": "correlateUsingIdf",
-    "argumentNames": ["keywords", "forceOneMatch"]
-  }, {
-    "name": "extractEmailAddresses",
-    "argumentNames": ["values"]
-  }, {
-    "name": "extractEmailDomains",
-    "argumentNames": ["values"]
-  }, {
-    "name": "emailsExchangedWithThoseAddresses",
-    "argumentNames": ["addresses"]
-  }, {
-    "name": "participantsForThoseEmails",
-    "argumentNames": ["emails", "sortBy", "maximum"]
-  }, {
-    "name": "personsWithThoseEmailAddresses",
-    "argumentNames": ["addresses"]
-  }, {
-    "name": "SalesforceCase_SimilarCases",
-    "argumentNames": ["caseNumber", "subject"]
-  }, {
-    "name": "SalesforceCase_SimilarCases_ProductFamily",
-    "argumentNames": ["caseNumber", "subject", "productFamily"]
-  }, {
-    "name": "SalesforceCase_RelatedSolutions",
-    "argumentNames": ["caseNumber", "subject"]
-  }, {
-    "name": "SalesforceCase_RelatedProblems",
-    "argumentNames": ["caseNumber", "subject"]
-  }, {
-    "name": "SalesforceCase_RelatedExperts",
-    "argumentNames": ["caseNumber", "subject"]
-  }, {
-    "name": "SalesforceCase_SimilarCasesByExpert",
-    "argumentNames": ["caseNumber", "subject", "expert"]
-  }, {
-    "name": "itemsRelatedToCase",
-    "argumentNames": ["caseNumber", "subject"]
-  }, {
-    "name": "itemsRelatedToCaseWithProductFamily",
-    "argumentNames": ["caseNumber", "subject", "productFamily"]
-  }, {
-    "name": "documentsWithSimilarConcepts",
-    "argumentNames": ["resultSet"]
-  }];
-
-  Coveo.Salesforce.type = 'case';
-  Coveo.Salesforce.knowledgeArticleInfos = {
-    "types": [{
-      "type": "knowledge__kav",
-      "label": "Knowledge"
-    }, {
-      "type": "faq__kav",
-      "label": "FAQ"
-    }, {
-      "type": "abstract__kav",
-      "label": "Abstract"
-    }],
-    "isKnowledgeEnabled": true
-  }
-
-  Coveo.BoxCreateArticle = {};
+  Coveo.context = window.salesforceContext.record;
 
   var attachToCaseEndpoint = {
     attachToCase: function (data, callback) {
