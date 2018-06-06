@@ -6,7 +6,7 @@ const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const webpackConfig = require('./../webpack.config.js');
 
-gulp.task('dev', done => {
+gulp.task('dev', ['setup'], done => {
   _.mapObject(webpackConfig.entry, (value, key) => {
     value.unshift(`webpack-dev-server/client?http://localhost:${cfg.server_port}/`);
   });
