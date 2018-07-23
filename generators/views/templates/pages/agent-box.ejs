@@ -20,6 +20,19 @@
 
     <%% include ../partials/agent-box/mock-context %>
 
+    <style>
+        /* To make things pretty locally :) */
+        body {
+          max-width: 400px;
+          float: right;
+          box-shadow: 1px 0 3px 4px #d7d7d7;
+        }
+    </style>
+
+    <script>
+        window.sforce = {} // needed to prevent to run the Agent search locally
+    </script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             Coveo.SearchEndpoint.configureCloudV2Endpoint('<%%- config.coveo.org_id %>', '<%%- token %>', '<%%- config.coveo.rest_uri -%>');
