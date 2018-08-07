@@ -39,7 +39,7 @@
 
             var searchInterfaceEl = document.getElementById('search');
             var custo = new Coveo.<%= capitalizeCustomerSafeName %>Custo(searchInterfaceEl);
-            Coveo.options(searchInterfaceEl, Coveo._.extend(custo.getDefaultOptions(), { Analytics: { searchHub: '<%- config.coveo.searchHub %>' } }));
+            Coveo.options(searchInterfaceEl, Coveo._.extend(custo.getDefaultOptions(), { Analytics: { searchHub: '<%%- config.coveo.searchHub %>' } }));
 
             Coveo.$(searchInterfaceEl).coveo('initInsightPanel');
         });
