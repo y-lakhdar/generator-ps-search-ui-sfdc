@@ -36,13 +36,13 @@ module.exports = class extends Generator {
             name: 'authorEmail',
             message: "Author's Email",
             when: !this.props.authorEmail,
-            default: this.user.git.email(),
+            // default: this.user.git.email(), // FIXME: this.user.git.email() throw an error
             store: true
         }, {
             name: 'authorName',
             message: "Author's Name",
             when: !this.props.authorName,
-            default: this.user.git.name(),
+            // default: this.user.git.name(),
             store: true
         }, {
             name: 'keywords',
