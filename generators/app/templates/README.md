@@ -37,21 +37,33 @@ If we want to load that Docker container from the archive tar file :
 * `gulp build` -> same as default
 * `gulp dev` -> use port 3000 for realtime changes
 * `gulp compile` -> Build only the TypeScript code and generate its output in the `./bin` folder.
-* `gulp bundle-sfdc` -> Bundle the content of the `./bin` folder in the `./zip` folder.
+* `gulp sfdc` -&gt; Setup a bundle with all the requirements for Salesforce.
+* `gulp sfdc --vf` -&gt; Compile only Visualforce Pages and Components for Salesforce.
 
 ## Compilation Settings
 * `gulp dev --config` -> Set configuration (e.g.: development,uat,production)
-* `gulp dev --filterExpression` -> Override default filter expression (e.g.: @uri)
-* `gulp dev --impersonateUser` -> Set user to impersonate (e.g.: --impersonateUser=user1@coveo.com or --impersonateUser="user1@coveo.com;user2@coveo.com" for multiple users)
-
-## Tips n trick for developers on Windows
-* `gulp;gulp prepareSfdc;gulp bundleSfdc;gulp deploySfdc` -&gt; build, prepare, bundle and deploy the SFDC project
+* `gulp dev --filter` -> Override default filter expression (e.g.: @uri)
+* `gulp dev --noFilter` -> This will prevent the filter to be added to the token
+* `gulp dev --searchHub` -> Set the searchHub
+* `gulp dev --pipeline` -> Set the pipeline
 
 ## How to run DEV on your local machine
-* `gulp dev --impersonateUser="someone@dev.somewhere.com"` -> http://localhost:3000
-
-## How to run UAT on your local machine
-* `gulp dev --config=uat --impersonateUser="someone@uat.somewhere.com"` -> http://localhost:3000
+* `gulp dev` -> http://localhost:3000
 
 ## How to run PRODUCTION your local machine
-* `gulp dev --config=production --impersonateUser="someone@somewhere.com"` -> http://localhost:3000
+* `gulp dev --config production` -> http://localhost:3000
+
+## How to open the search page with a different language
+You can change the search page language by adding the `local` query parameter to the url. For instance, to load the search page in French, open
+http://localhost:3001/support-search?local=fr
+
+## Useful Links
+
+General reference documentation is generated using TypeDoc (see
+[Coveo JavaScript Search UI Framework - Reference Documentation](https://coveo.github.io/search-ui/)). The
+generated reference documentation lists and describes all available options and public methods for each component.
+
+A tutorial is available (see
+[JavaScript Search Framework Getting Started Tutorial](https://developers.coveo.com/display/JsSearchV1/JavaScript+Search+Framework+V1+Getting+Started+Tutorial)).
+If you are new to the Coveo JavaScript Search UI Framework, you should definitely consult this tutorial, as it contains
+valuable information.

@@ -10,7 +10,7 @@ app.get('/', (req, res) => {
 
 app.get('/:name', coveoPlatformApi.getSearchToken, (req, res) => {
   var name = req.params.name;
-
+  var userLocale = req.query.local || 'en';
   if (name) {
     res.render(
       `pages/${name}`,
@@ -18,6 +18,7 @@ app.get('/:name', coveoPlatformApi.getSearchToken, (req, res) => {
         title: name.replace(/-/g, ' '),
         config: cfg,
         token: req.token,
+        userLocale: userLocale,
         production: process.env.NODE_ENV == 'production'
       },
       (err, html) => {

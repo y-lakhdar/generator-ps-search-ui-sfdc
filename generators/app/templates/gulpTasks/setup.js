@@ -12,6 +12,7 @@ gulp.task('preparePages', function () {
           title : '<%= capitalizeCustomerSafeName %> Search Prototype',
           config: cfg,
           token: '',
+          userLocale: 'en',
           production: process.env.NODE_ENV == 'production'
         }, { ext:'.html' }))
         .pipe(gulp.dest('./bin'))
