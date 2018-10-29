@@ -29,6 +29,7 @@ export class <%= capitalizeCustomerSafeName %>Custo {
     this.rootElement.on(QueryEvents.doneBuildingQuery, (e: Event, data: IDoneBuildingQueryEventArgs) => this.handleDoneBuildingQuery(e, data));
     this.rootElement.on(QueryEvents.preprocessResults, (e: Event, data: IPreprocessResultsEventArgs) => this.handlePreprocessResults(e, data));
     this.rootElement.on(QueryEvents.querySuccess, (e: Event, data: IQuerySuccessEventArgs) => this.handleQuerySuccess(e, data));
+    this.initStrings();
   }
 
   /**
@@ -39,9 +40,7 @@ export class <%= capitalizeCustomerSafeName %>Custo {
    * After Initialization
    * initializing custom strings during before init event to avoid any issue with SFDC init strings.
    */
-  private handleAfterInit() {
-    this.initStrings();
-  }
+  private handleAfterInit() { }
   /**
    * After Component Initialization
    */
